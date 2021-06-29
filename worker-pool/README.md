@@ -6,7 +6,7 @@
 
 Pada bahasa pemrograman golang, kita tau bahwa kita dapat membuat concurrency dengan goroutine. Pada tulisan kali ini kita akan membahas dan membuat **worker pool** sederhana, lalu apa itu worker pool ?. Worker pool atau thread pool itu beberapa goroutine yang siap gantian ngambil antrian tugas dari channel task dan ketika selesai akan dikirim ke channel result.
 
-![](/home/rizky/development/go/src/github.com/needkopi/riset-go/worker-pool/Group 1.png)
+![](https://github.com/needkopi/riset-go/blob/master/worker-pool/Group%201.png)
 
 Lalu kenapa kita butuh worker pool?, tentunya kita tidak memliki resource yang tidak terbatas pada komputer/server kita, kalau kita membuat banyak goroutine itu akan menghabiskan resource memory dan CPU. Dengan memakai limited worker pool  kita dapat meminimalisir hal tersebut
 
