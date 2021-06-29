@@ -4,7 +4,7 @@
 
 ### Intro
 
-Pada bahasa pemrograman golang, kita tau bahwa kita dapat membuat concurrency dengan goroutine. Pada tulisan kali ini kita akan membahas dan membuat **worker pool** sederhana, lalu apa itu worker pool ?. Worker pool atau thread pool itu beberapa goroutine yang siap gantian ngambil antrian tugas dari channel task dan ketika selesai akan dikirim ke channel result.
+Pada bahasa pemrograman golang, kita tau bahwa kita dapat membuat concurrency dengan goroutine. Pada tulisan kali ini kita akan membahas dan [ membuat **worker pool**](#Implement) sederhana, lalu apa itu worker pool ?. Worker pool atau thread pool itu beberapa goroutine yang siap gantian ngambil antrian tugas dari channel task dan ketika selesai akan dikirim ke channel result.
 
 ![](https://github.com/needkopi/riset-go/blob/master/worker-pool/Group%201.png)
 
