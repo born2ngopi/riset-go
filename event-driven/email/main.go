@@ -1,5 +1,10 @@
 package main
 
+import (
+	"log"
+	"runtime"
+)
+
 type APP struct {
 	RabbitMQ *rabbitMq
 }
@@ -16,6 +21,17 @@ func main() {
 		})
 		return
 	}
+
+	// register recovery function
+	defer func() {
+		if r := recover(); r != nil {
+			const size = 64 << 10
+			buf := make([]byte, size)
+			buf = buf[:runtime.Stack(buf, false)]
+			log.Printf("panic running process: %v\n%s\n", r, buf)
+		}
+	}()
+
 	app.RabbitMQ = mq.(*rabbitMq)
 
 	app.SendNotif()
