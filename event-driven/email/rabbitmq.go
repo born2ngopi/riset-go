@@ -75,3 +75,41 @@ func (mq *rabbitMq) Publish(body []byte) error {
 
 	return nil
 }
+
+func (mq *rabbitMq) QueueDeclare() (amqp.Queue, error) {
+	return mq.Channel.QueueDeclare(
+		"test-queue", // name of the queue
+		true,         // durable
+		false,        // delete when unused
+		false,        // exclusive
+		false,        // noWait
+		nil,          // arguments
+	)
+}
+
+func (mq *rabbitMq) QueueBind(queue amqp.Queue) error {
+	if err := mq.Channel.QueueBind(
+		queue.Name,      // name of the queue
+		"test-key",      // bindingKey
+		mq.ExchangeName, // sourceExchange
+		false,           // noWait
+		nil,             // arguments
+	); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (mq *rabbitMq) Consume(queue amqp.Queue) (<-chan amqp.Delivery, error) {
+	return mq.Channel.Consume(
+		queue.Name,        // name
+		"simple-consumer", // consumerTag,
+		false,             // noAck
+		false,             // exclusive
+		false,             // noLocal
+		false,             // noWait
+		nil,               // arguments
+	)
+
+}

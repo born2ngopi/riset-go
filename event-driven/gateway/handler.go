@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+type MessageDTO struct {
+	Message string `json:"message"`
+}
+
 func (app *APP) Version(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		ResponseNotFound(w)

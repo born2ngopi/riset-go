@@ -15,10 +15,6 @@ type APP struct {
 	RabbitMQ *rabbitMq
 }
 
-type MessageDTO struct {
-	Message string `json:"message"`
-}
-
 func main() {
 
 	app := &APP{}
